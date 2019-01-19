@@ -13,7 +13,7 @@ SECRET_KEY = 'pqu4bsz8!%8ft)l4$@+l3p$r)9p52-@(oc!7axz%71qmtn5oh1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['178.128.239.207', 'assignmentunochat.tk']
 
 
 # Application definition
