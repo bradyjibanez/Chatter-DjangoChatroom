@@ -15,7 +15,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['178.128.239.207', 'assignmentunochat.tk']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -62,10 +61,11 @@ ASGI_APPLICATION = 'chatter.routing.application'
 
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#        'BACKEND': 'asgi_redis.RedisChannelLayer',
         'CONFIG': {
             "hosts": [('127.0.0.1', 6379)],
         },
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
     },
 }
 
