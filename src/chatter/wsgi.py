@@ -1,11 +1,5 @@
-"""
-WSGI config for chatter project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/
-"""
+#What is used to reference straight http calls (not for async
+#or websockets). Only needed for native django server run testing
 
 import os
 

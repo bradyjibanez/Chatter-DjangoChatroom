@@ -1,3 +1,6 @@
+#Where config for nginx, uwsgi, daphne, redis, comes into play
+#for appropriate redirecting of app to calls by users
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -18,6 +21,7 @@ ALLOWED_HOSTS = ['178.128.239.207', 'assignmentunochat.tk']
 # Application definition
 
 INSTALLED_APPS = [
+    #'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -32,7 +36,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -61,11 +65,11 @@ ASGI_APPLICATION = 'chatter.routing.application'
 
 CHANNEL_LAYERS = {
     'default': {
-#        'BACKEND': 'asgi_redis.RedisChannelLayer',
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
             "hosts": [('127.0.0.1', 6379)],
         },
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        #"BACKEND": "channels_redis.core.RedisChannelLayer",
     },
 }
 
@@ -76,6 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'NAME': 'CHATTER',
     }
 }
 
@@ -98,7 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -116,4 +120,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+#PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 STATIC_URL = '/static/'
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')

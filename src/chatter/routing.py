@@ -1,3 +1,6 @@
+#Relay of control for websocket sync defined in routing.py
+#chat app directory
+
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 import chat.routing

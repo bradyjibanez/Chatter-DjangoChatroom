@@ -1,12 +1,9 @@
-"""
-ASGI entrypoint. Configures Django and then runs the application
-defined in the ASGI_APPLICATION setting.
-"""
+#Necessary for native django server run testing
 
 import os
 import django
-from channels.asgi import get_channel_layer
+from channels.routing import get_default_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "chatter.settings")
-#django.setup()
-channel_layer = get_channel_layer()
+django.setup()
+application = get_default_application()
